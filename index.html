@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Happy Birthday Simar!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Baloo+2:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f9c6f9 0%, #f6e6ff 50%, #b2f7ef 100%);
+            overflow-y: auto;
+            font-family: 'Baloo 2', cursive;
+            -webkit-overflow-scrolling: touch;
+        }
+        .sparkle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #fffbe7;
+            border-radius: 50%;
+            opacity: 0.7;
+            box-shadow: 0 0 8px 2px #fffbe7;
+            animation: sparkle 2s linear infinite;
+        }
+        @keyframes sparkle {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; }
+            100% { opacity: 0.7; }
+        }
+        .greeting-card {
+            position: relative;
+            margin: 20px auto 40px auto;
+            background: rgba(255,255,255,0.85);
+            border-radius: 32px;
+            box-shadow: 0 8px 32px #e0b3ff99;
+            max-width: 90%;
+            padding: 24px 16px 32px 16px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+        .caticorn {
+            width: 120px;
+            margin: 0 auto 16px auto;
+            display: block;
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-18px); }
+        }
+        .title {
+            font-family: 'Pacifico', cursive;
+            font-size: 2rem;
+            color: #e75480;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 8px #fff, 0 0 2px #e0b3ff;
+        }
+        .subtitle {
+            font-size: 1rem;
+            color: #a259c6;
+            margin-bottom: 16px;
+        }
+        .pawprints {
+            margin: 12px 0 0 0;
+            font-size: 1.2rem;
+            color: #f7b2e6;
+        }
+        .balloon {
+            position: absolute;
+            bottom: -120px;
+            width: 40px;
+            height: 56px;
+            background: linear-gradient(135deg, #f7b2e6 0%, #b2f7ef 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            box-shadow: 0 4px 16px #e0b3ff55;
+            z-index: 2;
+            animation: riseBalloon linear forwards;
+        }
+        .balloon::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -18px;
+            width: 2px;
+            height: 18px;
+            background: #e75480;
+            transform: translateX(-50%);
+        }
+        @keyframes riseBalloon {
+            0% { bottom: -120px; opacity: 1; }
+            90% { opacity: 1; }
+            100% { bottom: 110vh; opacity: 0; }
+        }
+        .confetti {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            opacity: 0.8;
+            z-index: 3;
+            animation: confetti-fall 3s linear infinite;
+        }
+        @keyframes confetti-fall {
+            0% { top: -20px; }
+            100% { top: 110vh; }
+        }
+        .super-girl {
+            font-size: 0.9rem;
+            color: #e75480;
+            font-weight: bold;
+            margin-top: 12px;
+            letter-spacing: 1px;
+        }
+        .unicorn {
+            font-size: 1.5rem;
+            color: #b2f7ef;
+            margin: 0 4px;
+        }
+        .cat-heart {
+            font-size: 1.5rem;
+            color: #e75480;
+            margin: 0 4px;
+        }
+        .footer {
+            margin-top: 24px;
+            font-size: 0.9rem;
+            color: #a259c6;
+        }
+        .cat-game {
+            position: relative;
+            width: 100%;
+            height: 120px;
+            margin: 16px 0;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .game-cat {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        .game-cat img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .game-cat:hover {
+            transform: scale(1.1);
+        }
+        .score {
+            font-size: 1rem;
+            color: #e75480;
+            margin: 8px 0;
+        }
+        .real-cats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 16px 0;
+        }
+        .real-cat {
+            width: 80px;
+            height: 80px;
+            margin: 8px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .real-cat img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .real-cat:hover {
+            transform: scale(1.1);
+        }
+        .play-music {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 8px 16px;
+            border-radius: 8px;
+            color: #e75480;
+            font-size: 12px;
+            cursor: pointer;
+            z-index: 1000;
+            border: 2px solid #f7b2e6;
+            transition: all 0.3s ease;
+        }
+        .play-music:hover {
+            background: rgba(255, 255, 255, 1);
+            transform: scale(1.05);
+        }
+        .music-controls {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 8px;
+            border-radius: 8px;
+            border: 2px solid #f7b2e6;
+            z-index: 1000;
+            display: none;
+        }
+        .music-controls button {
+            background: #e75480;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            margin: 2px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .music-controls button:hover {
+            background: #f7b2e6;
+        }
+        .kitty-shower {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 9999;
+        }
+        .shower-kitty {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            overflow: hidden;
+            animation: kittyShower 3s linear forwards;
+            box-shadow: 0 0 12px rgba(231, 84, 128, 0.8);
+        }
+        .shower-kitty img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        @keyframes kittyShower {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0.7;
+            }
+        }
+        .achievement-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #f7b2e6 0%, #e75480 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 16px;
+            text-align: center;
+            z-index: 10000;
+            box-shadow: 0 8px 24px rgba(231, 84, 128, 0.5);
+            animation: popupBounce 0.5s ease-out;
+            font-family: 'Pacifico', cursive;
+            font-size: 1.2rem;
+            display: none;
+            max-width: 80%;
+        }
+        @keyframes popupBounce {
+            0% {
+                transform: translate(-50%, -50%) scale(0.5);
+                opacity: 0;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+        }
+        .rainbow-text {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7, #dda0dd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: rainbowShimmer 2s ease-in-out infinite;
+        }
+        @keyframes rainbowShimmer {
+            0%, 100% { filter: hue-rotate(0deg); }
+            50% { filter: hue-rotate(180deg); }
+        }
+        .love-shower {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 9999;
+        }
+        .love-item {
+            position: absolute;
+            font-size: 1.5rem;
+            animation: loveShower 4s linear forwards;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+        }
+        @keyframes loveShower {
+            0% {
+                transform: translateY(-100px) rotate(0deg) scale(0.5);
+                opacity: 1;
+            }
+            25% {
+                transform: translateY(25vh) rotate(90deg) scale(1.2);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(50vh) rotate(180deg) scale(1);
+                opacity: 1;
+            }
+            75% {
+                transform: translateY(75vh) rotate(270deg) scale(1.1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg) scale(0.8);
+                opacity: 0.3;
+            }
+        }
+        .love-achievement {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #ff69b4 0%, #ff1493 50%, #8b008b 100%);
+            color: white;
+            padding: 24px;
+            border-radius: 20px;
+            text-align: center;
+            z-index: 10000;
+            box-shadow: 0 12px 32px rgba(255, 20, 147, 0.6);
+            animation: lovePopup 0.6s ease-out;
+            font-family: 'Pacifico', cursive;
+            font-size: 1.4rem;
+            display: none;
+            max-width: 80%;
+            border: 2px solid #fff;
+        }
+        @keyframes lovePopup {
+            0% {
+                transform: translate(-50%, -50%) scale(0.3) rotate(-10deg);
+                opacity: 0;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.2) rotate(5deg);
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+        .heart-pulse {
+            animation: heartPulse 1s ease-in-out infinite;
+        }
+        @keyframes heartPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        .milestone-20-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #b2f7ef 0%, #e75480 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 16px;
+            text-align: center;
+            z-index: 10000;
+            box-shadow: 0 8px 24px rgba(231, 84, 128, 0.5);
+            animation: popupBounce 0.5s ease-out;
+            font-family: 'Pacifico', cursive;
+            font-size: 1.2rem;
+            display: none;
+            max-width: 80%;
+        }
+        .milestone-30-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #a259c6 0%, #f7b2e6 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 16px;
+            text-align: center;
+            z-index: 10000;
+            box-shadow: 0 8px 24px rgba(231, 84, 128, 0.5);
+            animation: popupBounce 0.5s ease-out;
+            font-family: 'Pacifico', cursive;
+            font-size: 1.2rem;
+            display: none;
+            max-width: 80%;
+        }
+        .milestone-50-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #ffeaa7 0%, #dda0dd 100%);
+            color: white;
+            padding: 24px;
+            border-radius: 20px;
+            text-align: center;
+            z-index: 10000;
+            box-shadow: 0 12px 32px rgba(255, 20, 147, 0.6);
+            animation: lovePopup 0.6s ease-out;
+            font-family: 'Pacifico', cursive;
+            font-size: 1.4rem;
+            display: none;
+            max-width: 80%;
+            border: 2px solid #fff;
+        }
+        @media (min-width: 768px) {
+            .greeting-card {
+                margin: 60px auto 40px auto;
+                max-width: 500px;
+                padding: 48px 32px 64px 32px;
+            }
+            .caticorn {
+                width: 160px;
+            }
+            .title {
+                font-size: 2.8rem;
+            }
+            .subtitle {
+                font-size: 1.3rem;
+            }
+            .pawprints {
+                font-size: 1.5rem;
+            }
+            .super-girl {
+                font-size: 1.1rem;
+            }
+            .footer {
+                font-size: 1.1rem;
+            }
+            .cat-game {
+                height: 150px;
+            }
+            .game-cat {
+                width: 60px;
+                height: 60px;
+            }
+            .real-cat {
+                width: 100px;
+                height: 100px;
+            }
+            .play-music {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+            .music-controls {
+                padding: 10px;
+            }
+            .music-controls button {
+                padding: 5px 10px;
+            }
+            .shower-kitty {
+                width: 40px;
+                height: 40px;
+            }
+            .achievement-popup, .milestone-20-popup, .milestone-30-popup {
+                padding: 30px;
+                font-size: 1.5rem;
+            }
+            .love-achievement, .milestone-50-popup {
+                padding: 40px;
+                font-size: 1.8rem;
+            }
+            .love-item {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="play-music" onclick="playMusic()">🎵 Click for Birthday Music!</div>
+    <div class="music-controls" id="musicControls">
+        <button onclick="pauseMusic()">⏸️ Pause</button>
+        <button onclick="resumeMusic()">▶️ Play</button>
+        <button onclick="stopMusic()">⏹️ Stop</button>
+    </div>
+    <div class="achievement-popup" id="achievementPopup">
+        <div class="rainbow-text">🎉 KITTY MASTER! 🎉</div>
+        <div style="font-size: 0.9rem; margin-top: 8px;">You caught 10 kitties! Enjoy the wild kitty shower! 🐱✨</div>
+    </div>
+    <div class="love-achievement" id="loveAchievement">
+        <div class="heart-pulse">💖 LOVE GODDESS! 💖</div>
+        <div style="font-size: 1rem; margin-top: 12px;">15 KITTIES CAUGHT!</div>
+        <div style="font-size: 0.9rem; margin-top: 8px;">You deserve all the flowers, chocolates & hearts! 🌸🍫💕</div>
+    </div>
+    <div class="milestone-20-popup" id="milestone20Popup">
+        <div class="rainbow-text">😻 WOW 20 KITTIES! 😻</div>
+        <div style="font-size: 0.9rem; margin-top: 8px;">No stop it please, text me "kitty pitty" so I know u reached this milestone, due to poor coding skills I will have to rely on your message to know u hit the milestone</div>
+    </div>
+    <div class="milestone-30-popup" id="milestone30Popup">
+        <div class="rainbow-text">🐾 EASTER EGG! 🐾</div>
+        <div style="font-size: 0.9rem; margin-top: 8px;">Now this was an easter egg wow</div>
+    </div>
+    <div class="milestone-50-popup" id="milestone50Popup">
+        <div class="heart-pulse">💞 YOU'RE THE BEST! 💞</div>
+        <div style="font-size: 1rem; margin-top: 12px;">50 KITTIES CAUGHT!</div>
+        <div style="font-size: 0.9rem; margin-top: 8px;">You matter the most to me, stay blessed</div>
+    </div>
+    <div class="kitty-shower" id="kittyShower"></div>
+    <div class="love-shower" id="loveShower"></div>
+    <div class="greeting-card">
+        <svg class="caticorn" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="80" cy="120" rx="60" ry="30" fill="#fff"/>
+            <ellipse cx="80" cy="90" rx="50" ry="40" fill="#fff"/>
+            <ellipse cx="60" cy="80" rx="8" ry="12" fill="#f7b2e6"/>
+            <ellipse cx="100" cy="80" rx="8" ry="12" fill="#f7b2e6"/>
+            <ellipse cx="80" cy="110" rx="18" ry="10" fill="#f6e6ff"/>
+            <polygon points="80,30 85,70 75,70" fill="#e0b3ff"/>
+            <polygon points="80,10 83,30 77,30" fill="#f7b2e6"/>
+            <polygon points="80,0 82,10 78,10" fill="#e75480"/>
+            <ellipse cx="60" cy="60" rx="12" ry="18" fill="#fff"/>
+            <ellipse cx="100" cy="60" rx="12" ry="18" fill="#fff"/>
+            <ellipse cx="60" cy="60" rx="6" ry="9" fill="#f7b2e6"/>
+            <ellipse cx="100" cy="60" rx="6" ry="9" fill="#f7b2e6"/>
+            <ellipse cx="80" cy="100" rx="6" ry="4" fill="#e75480"/>
+            <ellipse cx="70" cy="95" rx="3" ry="2" fill="#e75480"/>
+            <ellipse cx="90" cy="95" rx="3" ry="2" fill="#e75480"/>
+            <ellipse cx="80" cy="80" rx="2" ry="1.5" fill="#e75480"/>
+            <ellipse cx="80" cy="85" rx="1.5" ry="1" fill="#e75480"/>
+            <polygon points="50,40 60,60 55,65" fill="#f7b2e6"/>
+            <polygon points="110,40 100,60 105,65" fill="#f7b2e6"/>
+        </svg>
+        <div class="title">Happy Birthday Simar! <span class="unicorn">🦄</span></div>
+        <div class="subtitle">Wishing you a magical, purr-fect, 25th birthday!<br>May your day be filled with sparkles, rainbows, and cat cuddles! <span class="cat-heart">😻</span></div>
+        <div class="subtitle" style="color: #e75480; font-family: 'Pacifico', cursive; font-size: 1.15rem; background: linear-gradient(90deg, #f7b2e6 0%, #e75480 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">On your special day, may joy and laughter surround you, and may all your dreams come true. Just like a cat chasing sunbeams, may you find happiness in the simplest things and adventure in every corner of life. <span class="cat-heart">😻</span></div>
+        <div class="pawprints">🐾 🐾 🐾 🐾 🐾</div>
+        <div class="super-girl">You are pawsome, unique, and totally super! <span style="font-size:1.2em;">💖</span></div>
+        <div class="footer">With love, from your worst friend (and all the magical cats!)</div>
+        <div class="cat-game">
+            <div class="score">Catch the kitties! Score: <span id="score">0</span></div>
+        </div>
+        <div class="real-cats">
+            <div class="real-cat"><img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=200&h=200" alt="Cute cat 1"></div>
+            <div class="real-cat"><img src="https://images.unsplash.com/photo-1495360010541-f48722b34f7d?auto=format&fit=crop&w=200&h=200" alt="Cute cat 2"></div>
+            <div class="real-cat"><img src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=200&h=200" alt="Cute cat 3"></div>
+            <div class="real-cat"><img src="https://images.unsplash.com/photo-1533738363-b7f9aef128ce?auto=format&fit=crop&w=200&h=200" alt="Cute cat 4"></div>
+            <div class="real-cat"><img src="https://images.unsplash.com/photo-1543852786-1cf6624b9987?auto=format&fit=crop&w=200&h=200" alt="Cute cat 5"></div>
+            <div class="real-cat"><img src="https://images.unsplash.com/photo-1548546738-8509cb246ed3?auto=format&fit=crop&w=200&h=200" alt="Cute cat 6"></div>
+        </div>
+    </div>
+    <script>
+        let audioContext;
+        let audioBuffer;
+        let audioSource;
+        let isPlaying = false;
+        function createBirthdayMelody() {
+            audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const melody = [
+                { freq: [261.63, 523.25], duration: 0.5 }, // C4 + C5
+                { freq: [261.63, 523.25], duration: 0.5 }, // C4 + C5
+                { freq: [293.66, 587.33], duration: 1.0 }, // D4 + D5
+                { freq: [261.63, 523.25], duration: 1.0 }, // C4 + C5
+                { freq: [349.23, 698.46], duration: 1.0 }, // F4 + F5
+                { freq: [329.63, 659.25], duration: 1.5 }, // E4 + E5
+                { freq: [261.63, 523.25], duration: 0.5 }, // C4 + C5
+                { freq: [261.63, 523.25], duration: 0.5 }, // C4 + C5
+                { freq: [293.66, 587.33], duration: 1.0 }, // D4 + D5
+                { freq: [261.63, 523.25], duration: 1.0 }, // C4 + C5
+                { freq: [392.00, 783.99], duration: 1.0 }, // G4 + G5
+                { freq: [349.23, 698.46], duration: 1.5 }, // F4 + F5
+                { freq: [261.63, 523.25], duration: 0.5 }, // C4 + C5
+                { freq: [261.63, 523.25], duration: 0.5 }, // C4 + C5
+                { freq: [523.25, 1046.50], duration: 1.0 }, // C5 + C6
+                { freq: [440.00, 880.00], duration: 1.0 }, // A4 + A5
+                { freq: [349.23, 698.46], duration: 1.0 }, // F4 + F5
+                { freq: [329.63, 659.25], duration: 1.0 }, // E4 + E5
+                { freq: [293.66, 587.33], duration: 2.0 }, // D4 + D5
+            ];
+            const rhythm = [
+                { freq: 100, duration: 0.5, type: 'triangle', gain: 0.1 }, // Bass drum
+                { freq: 100, duration: 0.5, type: 'triangle', gain: 0.1 },
+                { freq: 100, duration: 0.5, type: 'triangle', gain: 0.1 },
+                { freq: 100, duration: 0.5, type: 'triangle', gain: 0.1 },
+                { freq: 100, duration: 0.5, type: 'triangle', gain: 0.1 },
+                { freq: 100, duration: 0.5, type: 'triangle', gain: 0.1 },
+                { freq: 100, duration: 0.5, type: 'triangle', gain: 0.1 },
+                { freq: 100, duration: 0.5, type: 'triangle', gain: 0.1 },
+                { freq: 100, duration: 0.5, type: 'triangle', gain: 0.1 },
+                { freq: 100, duration: 0.5, type: 'triangle', gain: 0.1 },
+                { freq: 100, duration: 0.5, type: 'triangle', gain: 0.1 },
+                { freq: 100, duration: 0.5, type: 'triangle', gain: 0.1 },
+                { freq: 100, duration: 0.5, type: 'triangle', gain: 0.1 },
+                { freq: 100, duration: 0.5, type: 'triangle', gain: 0.1 },
+                { freq: 100, duration: 0.5, type: 'triangle', gain: 0.1 },
+                { freq: 100, duration: 0.5, type: 'triangle', gain: 0.1 },
+                { freq: 100, duration: 0.5, type: 'triangle', gain: 0.1 },
+                { freq: 100, duration: 0.5, type: 'triangle', gain: 0.1 },
+                { freq: 100, duration: 0.5, type: 'triangle', gain: 0.1 },
+            ];
+            return { melody, rhythm };
+        }
+        function playTone(frequency, duration, startTime, type = 'sine', gainValue = 0.3) {
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            if (Array.isArray(frequency)) {
+                frequency.forEach(freq => {
+                    const osc = audioContext.createOscillator();
+                    const gain = audioContext.createGain();
+                    osc.connect(gain);
+                    gain.connect(audioContext.destination);
+                    osc.frequency.value = freq;
+                    osc.type = type;
+                    gain.gain.setValueAtTime(gainValue, startTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, startTime + duration);
+                    osc.start(startTime);
+                    osc.stop(startTime + duration);
+                });
+            } else {
+                oscillator.frequency.value = frequency;
+                oscillator.type = type;
+                gainNode.gain.setValueAtTime(gainValue, startTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, startTime + duration);
+                oscillator.start(startTime);
+                oscillator.stop(startTime + duration);
+            }
+        }
+        function playBirthdayMelody() {
+            const { melody, rhythm } = createBirthdayMelody();
+            let currentTime = audioContext.currentTime;
+            melody.forEach(note => {
+                playTone(note.freq, note.duration, currentTime);
+                currentTime += note.duration;
+            });
+            let rhythmTime = audioContext.currentTime;
+            rhythm.forEach(beat => {
+                playTone(beat.freq, beat.duration, rhythmTime, beat.type, beat.gain);
+                rhythmTime += beat.duration;
+            });
+            setTimeout(() => {
+                if (isPlaying) {
+                    playBirthdayMelody();
+                }
+            }, currentTime * 1000);
+        }
+        function playMusic() {
+            try {
+                if (!audioContext) {
+                    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                }
+                if (audioContext.state === 'suspended') {
+                    audioContext.resume();
+                }
+                isPlaying = true;
+                playBirthdayMelody();
+                document.querySelector('.play-music').style.display = 'none';
+                document.getElementById('musicControls').style.display = 'block';
+                playConfettiSound();
+            } catch (error) {
+                console.error('Audio not supported:', error);
+                document.querySelector('.play-music').textContent = '🎵 Audio not supported';
+            }
+        }
+        function pauseMusic() {
+            isPlaying = false;
+            if (audioContext) {
+                audioContext.suspend();
+            }
+        }
+        function resumeMusic() {
+            isPlaying = true;
+            if (audioContext) {
+                audioContext.resume();
+                playBirthdayMelody();
+            }
+        }
+        function stopMusic() {
+            isPlaying = false;
+            if (audioContext) {
+                audioContext.close();
+                audioContext = null;
+            }
+            document.querySelector('.play-music').style.display = 'block';
+            document.getElementById('musicControls').style.display = 'none';
+        }
+        function playConfettiSound() {
+            if (!audioContext) return;
+            const frequencies = [800, 1000, 1200, 1500];
+            let startTime = audioContext.currentTime;
+            frequencies.forEach((freq, index) => {
+                setTimeout(() => {
+                    playTone(freq, 0.1, audioContext.currentTime);
+                }, index * 50);
+            });
+        }
+        for (let i = 0; i < 40; i++) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = Math.random() * 100 + 'vw';
+            sparkle.style.top = Math.random() * 100 + 'vh';
+            sparkle.style.animationDelay = (Math.random() * 2) + 's';
+            document.body.appendChild(sparkle);
+        }
+        const confettiColors = ['#f7b2e6', '#e75480', '#b2f7ef', '#fffbe7', '#a259c6'];
+        for (let i = 0; i < 30; i++) {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.background = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+            confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            confetti.style.top = Math.random() * 10 + 'vh';
+            document.body.appendChild(confetti);
+        }
+        function createBalloon() {
+            const balloon = document.createElement('div');
+            balloon.className = 'balloon';
+            balloon.style.left = Math.random() * 100 + 'vw';
+            balloon.style.background = `linear-gradient(135deg, ${confettiColors[Math.floor(Math.random()*confettiColors.length)]} 0%, #fffbe7 100%)`;
+            balloon.style.animationDuration = Math.random() * 3 + 2 + 's';
+            document.body.appendChild(balloon);
+            setTimeout(() => {
+                balloon.remove();
+            }, 5000);
+        }
+        for (let i = 0; i < 20; i++) {
+            setTimeout(createBalloon, i * 300);
+        }
+        setInterval(() => {
+            createBalloon();
+        }, 3000);
+        let score = 0;
+        const gameArea = document.querySelector('.cat-game');
+        const scoreElement = document.getElementById('score');
+        function createGameCat() {
+            const cat = document.createElement('div');
+            cat.className = 'game-cat';
+            const catImages = [
+                'https://images.unsplash.com/photo-1574144611937-0df059b5ef3e?auto=format&fit=crop&w=100&h=100',
+                'https://images.unsplash.com/photo-1533743983669-94fa5c4338ec?auto=format&fit=crop&w=100&h=100',
+                'https://images.unsplash.com/photo-1592194996308-7b43878e84a6?auto=format&fit=crop&w=100&h=100',
+                'https://images.unsplash.com/photo-1618826411640-d6df44dd3f7a?auto=format&fit=crop&w=100&h=100',
+                'https://images.unsplash.com/photo-1543852786-1cf6624b9987?auto=format&fit=crop&w=100&h=100'
+            ];
+            cat.innerHTML = `<img src="${catImages[Math.floor(Math.random() * catImages.length)]}" alt="Catch me!">`;
+            const size = Math.random() * 20 + 40;
+            cat.style.width = `${size}px`;
+            cat.style.height = `${size}px`;
+            cat.style.left = Math.random() * (gameArea.offsetWidth - size) + 'px';
+            cat.style.top = Math.random() * (gameArea.offsetHeight - size) + 'px';
+            cat.addEventListener('click', () => {
+                score++;
+                scoreElement.textContent = score;
+                cat.remove();
+                if (audioContext && isPlaying) {
+                    playTone(523.25, 0.2, audioContext.currentTime);
+                }
+                if (score > 0 && score % 5 === 0) {
+                    playConfettiSound();
+                }
+                if (score === 10) {
+                    triggerKittyShower();
+                }
+                if (score === 15) {
+                    triggerLoveShower();
+                }
+                if (score === 20) {
+                    triggerMilestone20();
+                }
+                if (score === 30) {
+                    triggerMilestone30();
+                }
+                if (score === 50) {
+                    triggerMilestone50();
+                }
+            });
+            gameArea.appendChild(cat);
+            setTimeout(() => {
+                if (cat.parentNode) {
+                    cat.remove();
+                }
+            }, 2000);
+        }
+        setInterval(createGameCat, 1500);
+        createGameCat();
+        function triggerKittyShower() {
+            const shower = document.getElementById('kittyShower');
+            const popup = document.getElementById('achievementPopup');
+            popup.style.display = 'block';
+            if (audioContext && isPlaying) {
+                playAchievementSound();
+            }
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 3000);
+            const showerCatImages = [
+                'https://images.unsplash.com/photo-1574144611937-0df059b5ef3e?auto=format&fit=crop&w=100&h=100',
+                'https://images.unsplash.com/photo-1533743983669-94fa5c4338ec?auto=format&fit=crop&w=100&h=100',
+                'https://images.unsplash.com/photo-1592194996308-7b43878e84a6?auto=format&fit=crop&w=100&h=100',
+                'https://images.unsplash.com/photo-1618826411640-d6df44dd3f7a?auto=format&fit=crop&w=100&h=100',
+                'https://images.unsplash.com/photo-1543852786-1cf6624b9987?auto=format&fit=crop&w=100&h=100',
+                'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=100&h=100',
+                'https://images.unsplash.com/photo-1495360010541-f48722b34f7d?auto=format&fit=crop&w=100&h=100',
+                'https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=100&h=100',
+                'https://images.unsplash.com/photo-1533738363-b7f9aef128ce?auto=format&fit=crop&w=100&h=100',
+                'https://images.unsplash.com/photo-1548546738-8509cb246ed3?auto=format&fit=crop&w=100&h=100'
+            ];
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const kitty = document.createElement('div');
+                    kitty.className = 'shower-kitty';
+                    kitty.innerHTML = `<img src="${showerCatImages[Math.floor(Math.random() * showerCatImages.length)]}" alt="Shower kitty">`;
+                    kitty.style.left = Math.random() * 100 + 'vw';
+                    const size = Math.random() * 20 + 20;
+                    kitty.style.width = `${size}px`;
+                    kitty.style.height = `${size}px`;
+                    kitty.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                    shower.appendChild(kitty);
+                    setTimeout(() => {
+                        if (kitty.parentNode) {
+                            kitty.remove();
+                        }
+                    }, 4000);
+                }, i * 100);
+            }
+        }
+        function playAchievementSound() {
+            if (!audioContext) return;
+            const triumphantNotes = [
+                { freq: [523.25, 1046.50], duration: 0.3 }, // C5 + C6
+                { freq: [659.25, 1318.51], duration: 0.3 }, // E5 + E6
+                { freq: [783.99, 1567.98], duration: 0.3 }, // G5 + G6
+                { freq: [1046.50, 2093.00], duration: 0.6 }, // C6 + C7
+                { freq: [783.99, 1567.98], duration: 0.3 }, // G5 + G6
+                { freq: [1046.50, 2093.00], duration: 0.9 }, // C6 + C7
+            ];
+            let currentTime = audioContext.currentTime;
+            triumphantNotes.forEach(note => {
+                playTone(note.freq, note.duration, currentTime);
+                currentTime += note.duration;
+            });
+        }
+        function triggerLoveShower() {
+            const shower = document.getElementById('loveShower');
+            const popup = document.getElementById('loveAchievement');
+            popup.style.display = 'block';
+            if (audioContext && isPlaying) {
+                playLoveSound();
+            }
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 4000);
+            const loveItems = [
+                '🌸', '🌺', '🌹', '🌻', '🌷', '🌼', '🌙', '⭐', '✨',
+                '🍫', '🍰', '🧁', '🍪', '🍩', '🍭', '🍬', '🎂', '🍓',
+                '💕', '💖', '💗', '💘', '💝', '💞', '💟', '❤️', '💜', '🩷',
+                '🦋', '🌈', '💫', '🌟', '🎀', '💐', '🌺', '🌸', '🌹'
+            ];
+            for (let i = 0; i < 80; i++) {
+                setTimeout(() => {
+                    const loveItem = document.createElement('div');
+                    loveItem.className = 'love-item';
+                    loveItem.textContent = loveItems[Math.floor(Math.random() * loveItems.length)];
+                    loveItem.style.left = Math.random() * 100 + 'vw';
+                    const size = Math.random() * 1.5 + 1;
+                    loveItem.style.fontSize = `${size}rem`;
+                    loveItem.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                    loveItem.style.animationDelay = (Math.random() * 0.5) + 's';
+                    shower.appendChild(loveItem);
+                    setTimeout(() => {
+                        if (loveItem.parentNode) {
+                            loveItem.remove();
+                        }
+                    }, 6000);
+                }, i * 75);
+            }
+        }
+        function playLoveSound() {
+            if (!audioContext) return;
+            const loveNotes = [
+                { freq: [440.00, 880.00], duration: 0.4 }, // A4 + A5
+                { freq: [523.25, 1046.50], duration: 0.4 }, // C5 + C6
+                { freq: [659.25, 1318.51], duration: 0.6 }, // E5 + E6
+                { freq: [783.99, 1567.98], duration: 0.4 }, // G5 + G6
+                { freq: [659.25, 1318.51], duration: 0.4 }, // E5 + E6
+                { freq: [783.99, 1567.98], duration: 0.6 }, // G5 + G6
+                { freq: [1046.50, 2093.00], duration: 0.8 }, // C6 + C7
+                { freq: [987.77, 1975.53], duration: 0.4 }, // B5 + B6
+                { freq: [880.00, 1760.00], duration: 1.0 }, // A5 + A6
+            ];
+            let currentTime = audioContext.currentTime;
+            loveNotes.forEach(note => {
+                playTone(note.freq, note.duration, currentTime);
+                currentTime += note.duration;
+            });
+            setTimeout(() => {
+                const sparkleFreqs = [1318.51, 1567.98, 1975.53];
+                sparkleFreqs.forEach((freq, index) => {
+                    setTimeout(() => {
+                        playTone(freq, 0.3, audioContext.currentTime);
+                    }, index * 100);
+                });
+            }, 2000);
+        }
+        function triggerMilestone20() {
+            const popup = document.getElementById('milestone20Popup');
+            popup.style.display = 'block';
+            if (audioContext && isPlaying) {
+                playAchievementSound();
+            }
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 5000);
+        }
+        function triggerMilestone30() {
+            const popup = document.getElementById('milestone30Popup');
+            popup.style.display = 'block';
+            if (audioContext && isPlaying) {
+                playAchievementSound();
+            }
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 3000);
+        }
+        function triggerMilestone50() {
+            const popup = document.getElementById('milestone50Popup');
+            popup.style.display = 'block';
+            if (audioContext && isPlaying) {
+                playLoveSound();
+            }
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
